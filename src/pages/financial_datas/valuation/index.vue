@@ -18,14 +18,14 @@
         <u-tr class="tr">
           <u-th class="th">代码|名称</u-th>
           <u-th class="th">价格|市盈率</u-th>
-          <u-th class="th">估值（净利）</u-th>
-          <u-th class="th">估值（收入）</u-th>
+          <u-th class="th">估值(净|收)</u-th>
+          <u-th class="th">估市比</u-th>
         </u-tr>
         <u-tr class="tr" v-for="(item,index) in list" :key="index">
           <u-td><view @click="showPopup(item)">{{ item.symbol }}</view><view @click="showPopup(item)">{{ item.name }}</view></u-td>
           <u-td><view>{{ item.current }}</view><view>{{ item.shiyinglv_TTM }}</view></u-td>
-          <u-td><view>{{ item.jl_current }}</view></u-td>
-          <u-td>{{ item.yy_current }}</u-td>
+          <u-td><view>{{ item.jl_current }}</view><view>{{ item.yy_current }}</view></u-td>
+          <u-td><view>{{ item.report_date }}</view><view>{{ item.gushibi }}</view></u-td>
         </u-tr>
 
       </u-table>
@@ -123,6 +123,7 @@
             disabled
             :border-bottom="false"
           />
+
           <u-field
             label-align="right"
             label-width="120"
@@ -136,6 +137,22 @@
             label-width="120"
             v-model="form.jl_current"
             label="净利估值"
+            disabled
+            :border-bottom="false"
+          />
+          <u-field
+            label-align="right"
+            label-width="120"
+            v-model="form.report_date"
+            label="财报日期"
+            disabled
+            :border-bottom="false"
+          />
+          <u-field
+            label-align="right"
+            label-width="120"
+            v-model="form.gushibi"
+            label="估市比"
             disabled
             :border-bottom="false"
           />
