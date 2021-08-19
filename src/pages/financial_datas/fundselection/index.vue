@@ -17,13 +17,13 @@
       <u-table :th-style="{}" >
         <u-tr class="tr">
           <u-th class="th">代码|名称</u-th>
-          <u-th class="th">价格|市盈率</u-th>
+          <u-th class="th">价格|况|市盈</u-th>
           <u-th class="th">环比(2|10)</u-th>
           <u-th class="th">市场热度</u-th>
         </u-tr>
         <u-tr class="tr" v-for="(item,index) in list" :key="index">
           <u-td ><view @click="showPopup(item)">{{ item.symbol }}</view><view @click="showPopup(item)">{{ item.name }}</view></u-td>
-          <u-td><view>{{ item.current }}</view><view>{{ item.shiyinglv_TTM }}</view></u-td>
+          <u-td><view>{{ item.current }}</view><view>{{ item.gaodi }}&nbsp;{{ item.shiyinglv_TTM }}</view></u-td>
           <u-td><view>{{ item.huanbi_bilv }}</view>
             <view>{{ item.huanbi_bilv_5 }} </view></u-td>
 
@@ -59,7 +59,30 @@
             label="当前价格"
             disabled
             :border-bottom="false"
-
+          />
+          <u-field
+            label-align="right"
+            label-width="120"
+            v-model="form.yinianzuidi"
+            label="一年最低"
+            disabled
+            :border-bottom="false"
+          />
+          <u-field
+            label-align="right"
+            label-width="120"
+            v-model="form.yinianzuigao"
+            label="一年最高"
+            disabled
+            :border-bottom="false"
+          />
+          <u-field
+            label-align="right"
+            label-width="120"
+            v-model="form.gaodi"
+            label="价格情况"
+            disabled
+            :border-bottom="false"
           />
           <u-field
             label-align="right"
@@ -208,6 +231,10 @@ export default {
             e.zongguben = this.$u.lodash.ceil((e.zongguben / 10000), 3) + '万'
             e.huanbi_bilv = this.$u.lodash.ceil((e.huanbi_bilv * 100), 3) + '%'
             e.huanbi_bilv_5 = this.$u.lodash.ceil((e.huanbi_bilv_5 * 100), 3) + '%'
+            e.yinianzuidi = e['52zhouzuidi']
+            e.yinianzuigao = e['52zhouzuigao']
+            e.gaodi = this.$u.lodash.ceil((e.gaodi * 100), 1) + '%'
+            e.shiyinglv_TTM = this.$u.lodash.ceil((e.shiyinglv_TTM), 1)
           })
         })
       }, 200)
