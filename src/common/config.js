@@ -1,5 +1,5 @@
 export default {
-  url: 'http://jgg.fosun.vaiwan.com/jgg',
+  url: 'http://delta.vaiwan.com',
   apiUrl: 'http://miniapp.vaiwan.com/miniapp',
   client_id: 'miniapp',
   client_secret: 'qwertyuiop',

@@ -18,13 +18,13 @@
         <u-tr class="tr">
           <u-th class="th">代码|名称</u-th>
           <u-th class="th">价格|况|市盈</u-th>
-          <u-th class="th">环比(2|10)</u-th>
+          <u-th class="th">环比2|6|10</u-th>
           <u-th class="th">市场热度</u-th>
         </u-tr>
         <u-tr class="tr" v-for="(item,index) in list" :key="index">
           <u-td ><view @click="showPopup(item)">{{ item.symbol }}</view><view @click="showPopup(item)">{{ item.name }}</view></u-td>
           <u-td><view>{{ item.current }}</view><view>{{ item.gaodi }}&nbsp;{{ item.shiyinglv_TTM }}</view></u-td>
-          <u-td><view>{{ item.huanbi_bilv }}</view>
+          <u-td><view>{{ item.huanbi_bilv }}&nbsp;{{ item.huanbi_bilv_3 }}</view>
             <view>{{ item.huanbi_bilv_5 }} </view></u-td>
 
           <u-td>{{ item.sum }}</u-td>
@@ -229,8 +229,10 @@ export default {
             e.zongshizhi = this.$u.lodash.ceil((e.zongshizhi / 100000000), 3) + '亿'
             e.liutonggu = this.$u.lodash.ceil((e.liutonggu / 10000), 3) + '万'
             e.zongguben = this.$u.lodash.ceil((e.zongguben / 10000), 3) + '万'
-            e.huanbi_bilv = this.$u.lodash.ceil((e.huanbi_bilv * 100), 3) + '%'
-            e.huanbi_bilv_5 = this.$u.lodash.ceil((e.huanbi_bilv_5 * 100), 3) + '%'
+            e.huanbi_bilv = this.$u.lodash.ceil((e.huanbi_bilv * 100), 1) + '%'
+            e.huanbi_bilv_3 = this.$u.lodash.ceil((e.huanbi_bilv_3 * 100), 1) + '%'
+
+            e.huanbi_bilv_5 = this.$u.lodash.ceil((e.huanbi_bilv_5 * 100), 1) + '%'
             e.yinianzuidi = e['52zhouzuidi']
             e.yinianzuigao = e['52zhouzuigao']
             e.gaodi = this.$u.lodash.ceil((e.gaodi * 100), 1) + '%'
