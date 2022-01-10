@@ -1,7 +1,7 @@
 
 <template>
   <Layout>
-    <view class="page-content1">
+    <view>
 
       <u-search
         placeholder="请输入..."
@@ -18,14 +18,14 @@
         <u-tr class="tr">
           <u-th class="th">代码|名称</u-th>
           <u-th class="th">价格|况|市盈</u-th>
-          <u-th class="th">估值</u-th>
-          <u-th class="th">估市比</u-th>
+
+          <u-th class="th">最近总值</u-th>
         </u-tr>
         <u-tr class="tr" v-for="(item,index) in list" :key="index">
           <u-td><view @click="showPopup(item)">{{ item.symbol }}</view><view @click="showPopup(item)">{{ item.name }}</view></u-td>
           <u-td><view>{{ item.current }}</view><view>{{ item.gaodi }}&nbsp;{{ item.shiyinglv_TTM }}</view></u-td>
-          <u-td><view>{{ item.xianjinliu_current }}</view></u-td>
-          <u-td><view>{{ item.report_date }}</view><view>{{ item.gushibi }}</view></u-td>
+
+          <u-td><view>{{ item.xinbianriqi }}</view><view>{{ item.jincibiandongzongzhi }}</view></u-td>
         </u-tr>
 
       </u-table>
@@ -37,8 +37,16 @@
           <u-field
             label-align="right"
             label-width="120"
-            v-model="f.gushibi"
-            label="估市比"
+            v-model="f.xinbianriqi"
+            label="最新变动日期"
+            disabled
+            :border-bottom="false"
+          />
+          <u-field
+            label-align="right"
+            label-width="120"
+            v-model="f.jincibiandongzongzhi"
+            label="最近总值"
             disabled
             :border-bottom="false"
           />
@@ -87,7 +95,7 @@ export default {
     search () {
       this.status = 'loading'
       setTimeout(() => {
-        this.$u.api.pageValuation({
+        this.$u.api.pageSkHolder({
           query: this.query,
           pageNum: this.pageNum,
           pageSize: this.pageSize
@@ -104,12 +112,11 @@ export default {
             e.zongshizhi = this.$u.lodash.ceil((e.zongshizhi / 100000000), 2) + '亿'
             e.liutonggu = this.$u.lodash.ceil((e.liutonggu / 10000), 3) + '万'
             e.zongguben = this.$u.lodash.ceil((e.zongguben / 10000), 3) + '万'
-            e.huanbi_bilv = this.$u.lodash.ceil((e.huanbi_bilv * 100), 3) + '%'
-            e.huanbi_bilv_5 = this.$u.lodash.ceil((e.huanbi_bilv_5 * 100), 3) + '%'
             e.yinianzuidi = e['52zhouzuidi']
             e.yinianzuigao = e['52zhouzuigao']
             e.gaodi = this.$u.lodash.ceil((e.gaodi * 100), 1) + '%'
             e.shiyinglv_TTM = this.$u.lodash.ceil((e.shiyinglv_TTM), 1)
+            e.jincibiandongzongzhi = this.$u.lodash.ceil((e.jincibiandongzongzhi / 10000), 2) + '万'
           })
         })
       }, 200)

@@ -34,7 +34,7 @@
 		}
 		,
 		{
-			"path": "pages/financial_datas/fundselection/index",
+			"path": "pages/financial_datas/valuation/index",
 			"style": {
 				"navigationStyle": "custom" ,
 				"navigationBarTextStyle": "white"
@@ -42,7 +42,23 @@
 		}
 		,
 		{
-			"path": "pages/financial_datas/valuation/index",
+			"path": "pages/financial_datas/peg/index",
+			"style": {
+				"navigationStyle": "custom" ,
+				"navigationBarTextStyle": "white"
+			}
+		}
+		,
+		{
+			"path": "pages/financial_datas/skholder/index",
+			"style": {
+				"navigationStyle": "custom" ,
+				"navigationBarTextStyle": "white"
+			}
+		}
+		,
+		{
+			"path": "pages/financial_datas/topholders/index",
 			"style": {
 				"navigationStyle": "custom" ,
 				"navigationBarTextStyle": "white"

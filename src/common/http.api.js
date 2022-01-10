@@ -23,15 +23,24 @@ const install = (Vue, vm) => {
       return vm.$u.post('/admin/financialdata/pageComprehensive', Object.assign(params, {
       }))
     },
-    pageFundSelection (params = {}) {
-      return vm.$u.post('/admin/financialdata/pageFundSelection', Object.assign(params, {
-      }))
-    },
 
     pageValuation (params = {}) {
       return vm.$u.post('/admin/financialdata/pageValuation', Object.assign(params, {
       }))
+    },
+    pagePEG (params = {}) {
+      return vm.$u.post('/admin/financialdata/pagePEG', Object.assign(params, {
+      }))
+    },
+    pageSkHolder (params = {}) {
+      return vm.$u.post('/admin/financialdata/pageSkHolder', Object.assign(params, {
+      }))
+    },
+    pageTopHolders (params = {}) {
+      return vm.$u.post('/admin/financialdata/pageTopHolders', Object.assign(params, {
+      }))
     }
+
   }
 }
 

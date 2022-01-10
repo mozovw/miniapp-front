@@ -47,12 +47,20 @@ export default {
           url: '/pages/financial_datas/comprehensive/index'
         }, {
           image: 'order',
-          text: '基金选择',
-          url: '/pages/financial_datas/fundselection/index'
-        }, {
-          image: 'order',
           text: '估值分析',
           url: '/pages/financial_datas/valuation/index'
+        }, {
+          image: 'order',
+          text: 'PEG分析',
+          url: '/pages/financial_datas/peg/index'
+        }, {
+          image: 'order',
+          text: '高管分析',
+          url: '/pages/financial_datas/skholder/index'
+        }, {
+          image: 'order',
+          text: '股东分析',
+          url: '/pages/financial_datas/topholders/index'
         }, {
           image: 'photo',
           text: '待定',

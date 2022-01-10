@@ -31,166 +31,12 @@
       </u-table>
 
       <u-loadmore :status="status" @loadmore="loadmore" />
-      <u-popup mode="left" v-model="show" width="55%">
-        <view style="padding:20px 5px 20px 5px;">
+      <Popup :form="form" :show="show" @closePopup="closePopup">
+        <template #customize="{f}">
           <u-field
             label-align="right"
             label-width="120"
-            v-model="form.symbol"
-            label="代码"
-            disabled
-            :border-bottom="false"
-          />
-          <u-field
-            label-align="right"
-            label-width="120"
-            v-model="form.name"
-            label="名称"
-            disabled
-            :border-bottom="false"
-          />
-          <u-field
-            label-align="right"
-            label-width="120"
-            v-model="form.current"
-            label="当前价格"
-            disabled
-            :border-bottom="false"
-          />
-          <u-field
-            label-align="right"
-            label-width="120"
-            v-model="form.yinianzuidi"
-            label="一年最低"
-            disabled
-            :border-bottom="false"
-          />
-          <u-field
-            label-align="right"
-            label-width="120"
-            v-model="form.yinianzuigao"
-            label="一年最高"
-            disabled
-            :border-bottom="false"
-          />
-          <u-field
-            label-align="right"
-            label-width="120"
-            v-model="form.gaodi"
-            label="价格情况"
-            disabled
-            :border-bottom="false"
-          />
-          <u-field
-            label-align="right"
-            label-width="120"
-            v-model="form.shiyinglv_TTM"
-            label="市盈率"
-            disabled
-            :border-bottom="false"
-          />
-          <u-field
-            label-align="right"
-            label-width="120"
-            v-model="form.shijinglv"
-            label="市净率"
-            disabled
-            :border-bottom="false"
-          />
-          <u-field
-            label-align="right"
-            label-width="120"
-            v-model="form.guxilv_TTM"
-            label="股息率"
-            disabled
-            :border-bottom="false"
-          />
-          <u-field
-            label-align="right"
-            label-width="120"
-            v-model="form.platename"
-            label="行业版块"
-            disabled
-            :border-bottom="false"
-          />
-
-          <u-field
-            label-align="right"
-            label-width="120"
-            v-model="form.zongshizhi"
-            label="总市值"
-            disabled
-            :border-bottom="false"
-          />
-          <u-field
-            label-align="right"
-            label-width="120"
-            v-model="form.zongguben"
-            label="总股本"
-            disabled
-            :border-bottom="false"
-          />
-          <u-field
-            label-align="right"
-            label-width="120"
-            v-model="form.liutongzhi"
-            label="流通值"
-            disabled
-            :border-bottom="false"
-          />
-          <u-field
-            label-align="right"
-            label-width="120"
-            v-model="form.liutonggu"
-            label="流通股"
-            disabled
-            :border-bottom="false"
-          />
-
-          <u-field
-            label-align="right"
-            label-width="120"
-            v-model="form.count"
-            label="市场热度"
-            disabled
-            :border-bottom="false"
-          />
-          <u-field
-            label-align="right"
-            label-width="120"
-            v-model="form.jingzichanshouyilv"
-            label="净产收益"
-            disabled
-            :border-bottom="false"
-          />
-          <u-field
-            label-align="right"
-            label-width="120"
-            v-model="form.zichanfuzhailv"
-            label="资产负债"
-            disabled
-            :border-bottom="false"
-          />
-          <u-field
-            label-align="right"
-            label-width="120"
-            v-model="form.yingyeshouru"
-            label="营业收入"
-            disabled
-            :border-bottom="false"
-          />
-          <u-field
-            label-align="right"
-            label-width="120"
-            v-model="form.yingyeshourutongbizengzhang"
-            label="营收增长"
-            disabled
-            :border-bottom="false"
-          />
-          <u-field
-            label-align="right"
-            label-width="120"
-            v-model="form.jinglirun"
+            v-model="f.jinglirun"
             label="净利润"
             disabled
             :border-bottom="false"
@@ -198,23 +44,73 @@
           <u-field
             label-align="right"
             label-width="120"
-            v-model="form.jingliruntongbizengzhang"
+            v-model="f.count"
+            label="市场热度"
+            disabled
+            :border-bottom="false"
+          />
+          <u-field
+            label-align="right"
+            label-width="120"
+            v-model="f.jingzichanshouyilv"
+            label="净产收益"
+            disabled
+            :border-bottom="false"
+          />
+          <u-field
+            label-align="right"
+            label-width="120"
+            v-model="f.zichanfuzhailv"
+            label="资产负债"
+            disabled
+            :border-bottom="false"
+          />
+          <u-field
+            label-align="right"
+            label-width="120"
+            v-model="f.yingyeshouru"
+            label="营业收入"
+            disabled
+            :border-bottom="false"
+          />
+          <u-field
+            label-align="right"
+            label-width="120"
+            v-model="f.yingyeshourutongbizengzhang"
+            label="营收增长"
+            disabled
+            :border-bottom="false"
+          />
+          <u-field
+            label-align="right"
+            label-width="120"
+            v-model="f.jinglirun"
+            label="净利润"
+            disabled
+            :border-bottom="false"
+          />
+          <u-field
+            label-align="right"
+            label-width="120"
+            v-model="f.jingliruntongbizengzhang"
             label="净利增长"
             disabled
             :border-bottom="false"
           />
-        </view>
-      </u-popup>
+        </template>
+      </Popup>
     </view>
   </Layout>
 </template>
 
 <script>
 import Layout from '@/slots/layout/index.vue'
+import Popup from '@/slots/popup/index.vue'
 
 export default {
   components: {
-    Layout
+    Layout,
+    Popup
   },
   data () {
     return {
@@ -238,6 +134,9 @@ export default {
     showPopup (form) {
       this.show = !this.show
       this.form = form
+    },
+    closePopup (show) {
+      this.show = show
     },
     search () {
       this.status = 'loading'
